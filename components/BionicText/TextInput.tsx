@@ -1,34 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import BionicText from "./BionicText";
+import Configs from "./Configs";
 
 interface TextInputProps {
   inputText: string;
   setInputText: (inputText: string) => void;
   convert: () => void;
+  boldLength: number;
+  setBoldLength: (boldLength: number) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
   inputText,
   setInputText,
   convert,
+  boldLength,
+  setBoldLength,
 }) => {
-  const [converted, setConverted] = useState(false);
-
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
-    setConverted(false);
   };
 
   return (
     <div className="w-full">
-      <Label htmlFor="conversionInput" className="text-lg">
-        Input Text
-      </Label>
+      <div className="flex justify-between pb-2">
+        <Label htmlFor="conversionInput" className="text-lg">
+          <BionicText text="Input Text" />
+        </Label>
+        <Configs boldLength={boldLength} setBoldLength={setBoldLength} />
+      </div>
       <Textarea
         value={inputText}
         placeholder="Insert your text for conversion here."
@@ -43,9 +48,8 @@ const TextInput: React.FC<TextInputProps> = ({
         <Button
           onClick={() => {
             convert();
-            setConverted(true);
           }}
-          disabled={converted || !inputText}
+          disabled={!inputText}
           className="bg-green-600 hover:bg-green-700"
         >
           <BionicText text="Convert" />

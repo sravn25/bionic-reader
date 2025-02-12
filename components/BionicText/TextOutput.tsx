@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { CodeXml, Copy } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { ToastAction } from "../ui/toast";
+import BionicText from "./BionicText";
 
 interface TextOutputProps {
   outputText: string;
@@ -51,32 +52,34 @@ const TextOutput: React.FC<TextOutputProps> = ({ outputText }) => {
 
   return (
     <div className="w-full">
-      <Label htmlFor="conversionOutput" className="text-lg">
-        Output Text
-      </Label>
+      <div className="flex justify-between pb-2">
+        <Label htmlFor="conversionOutput" className="text-lg">
+          <BionicText text="Output Text" />
+        </Label>
+        <div className="gap-0.5 flex justify-end">
+          <Button
+            onClick={handleCopyHTML}
+            disabled={!outputText}
+            variant="ghost"
+            className="border"
+          >
+            <CodeXml />
+          </Button>
+          <Button
+            onClick={handleCopyText}
+            disabled={!outputText}
+            variant="ghost"
+            className="border"
+          >
+            <Copy />
+          </Button>
+        </div>
+      </div>
       <div
         id="conversionOutput"
         className="w-full border rounded-md p-2 h-64 overflow-y-auto bg-background text-foreground"
         dangerouslySetInnerHTML={{ __html: outputText }}
       />
-      <div className="mt-2 gap-0.5 flex justify-end">
-        <Button
-          onClick={handleCopyHTML}
-          disabled={!outputText}
-          variant="ghost"
-          className="border"
-        >
-          <CodeXml />
-        </Button>
-        <Button
-          onClick={handleCopyText}
-          disabled={!outputText}
-          variant="ghost"
-          className="border"
-        >
-          <Copy />
-        </Button>
-      </div>
     </div>
   );
 };
