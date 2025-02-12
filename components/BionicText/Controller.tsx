@@ -10,6 +10,7 @@ const BionicController = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState<string>("");
   const [boldLength, setBoldLength] = useState(3);
+  const [fontSize, setFontSize] = useState(16);
 
   const convertToBionic = (): void => {
     setOutputText(bionicConvert(inputText, boldLength));
@@ -25,8 +26,10 @@ const BionicController = () => {
         convert={convertToBionic}
         boldLength={boldLength}
         setBoldLength={setBoldLength}
+        fontSize={fontSize}
+        setFontSize={setFontSize}
       />
-      <TextOutput outputText={outputText} />
+      <TextOutput outputText={outputText} fontSize={fontSize} />
     </div>
   );
 };

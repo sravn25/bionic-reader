@@ -13,6 +13,8 @@ interface TextInputProps {
   convert: () => void;
   boldLength: number;
   setBoldLength: (boldLength: number) => void;
+  fontSize: number;
+  setFontSize: (fontSize: number) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -21,6 +23,8 @@ const TextInput: React.FC<TextInputProps> = ({
   convert,
   boldLength,
   setBoldLength,
+  fontSize,
+  setFontSize,
 }) => {
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
@@ -32,7 +36,12 @@ const TextInput: React.FC<TextInputProps> = ({
         <Label htmlFor="conversionInput" className="text-lg">
           <BionicText text="Input Text" />
         </Label>
-        <Configs boldLength={boldLength} setBoldLength={setBoldLength} />
+        <Configs
+          boldLength={boldLength}
+          setBoldLength={setBoldLength}
+          fontSize={fontSize}
+          setFontSize={setFontSize}
+        />
       </div>
       <Textarea
         value={inputText}

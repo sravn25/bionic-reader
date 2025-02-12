@@ -11,9 +11,10 @@ import BionicText from "./BionicText";
 
 interface TextOutputProps {
   outputText: string;
+  fontSize: number;
 }
 
-const TextOutput: React.FC<TextOutputProps> = ({ outputText }) => {
+const TextOutput: React.FC<TextOutputProps> = ({ outputText, fontSize }) => {
   const handleCopyHTML = () => {
     navigator.clipboard.writeText(outputText).then(() =>
       toast({
@@ -77,6 +78,7 @@ const TextOutput: React.FC<TextOutputProps> = ({ outputText }) => {
       </div>
       <div
         id="conversionOutput"
+        style={{ fontSize: `${fontSize}px` }}
         className="w-full border rounded-md p-2 h-64 overflow-y-auto bg-background text-foreground"
         dangerouslySetInnerHTML={{ __html: outputText }}
       />
