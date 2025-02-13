@@ -13,6 +13,8 @@ interface BionicContextType {
   fontSize: number;
   setFontSize: (fontSize: number) => void;
   convertToBionic: () => void;
+  playbackSpeed: number;
+  setPlaybackSpeed: (playbackSpeed: number) => void;
 }
 
 const BionicContext = createContext<BionicContextType | undefined>(undefined);
@@ -24,6 +26,7 @@ export const BionicProvider: React.FC<{ children: React.ReactNode }> = ({
   const [outputText, setOutputText] = useState<string>("");
   const [boldLength, setBoldLength] = useState(3);
   const [fontSize, setFontSize] = useState(16);
+  const [playbackSpeed, setPlaybackSpeed] = useState(300);
 
   const convertToBionic = (): void => {
     setOutputText(bionicConvert(inputText, boldLength));
@@ -41,6 +44,8 @@ export const BionicProvider: React.FC<{ children: React.ReactNode }> = ({
         setBoldLength,
         fontSize,
         setFontSize,
+        playbackSpeed,
+        setPlaybackSpeed,
       }}
     >
       {children}

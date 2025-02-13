@@ -9,15 +9,7 @@ import Configs from "./Configs";
 import { useBionic } from "@/context/bionicContext";
 
 const TextInput = () => {
-  const {
-    inputText,
-    setInputText,
-    convertToBionic,
-    boldLength,
-    setBoldLength,
-    fontSize,
-    setFontSize,
-  } = useBionic();
+  const { inputText, setInputText, convertToBionic } = useBionic();
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
@@ -29,12 +21,7 @@ const TextInput = () => {
         <Label htmlFor="conversionInput" className="text-lg">
           <BionicText text="Input Text" />
         </Label>
-        <Configs
-          boldLength={boldLength}
-          setBoldLength={setBoldLength}
-          fontSize={fontSize}
-          setFontSize={setFontSize}
-        />
+        <Configs />
       </div>
       <Textarea
         value={inputText}

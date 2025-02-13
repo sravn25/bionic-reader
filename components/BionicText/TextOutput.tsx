@@ -9,6 +9,7 @@ import { toast } from "@/hooks/use-toast";
 import { ToastAction } from "../ui/toast";
 import BionicText from "./BionicText";
 import { useBionic } from "@/context/bionicContext";
+import BionicPlayer from "./Player";
 
 const TextOutput: React.FC = () => {
   const { outputText, fontSize } = useBionic();
@@ -80,6 +81,9 @@ const TextOutput: React.FC = () => {
         className="w-full border rounded-md p-2 h-64 overflow-y-auto bg-background text-foreground"
         dangerouslySetInnerHTML={{ __html: outputText }}
       />
+      <div className="flex justify-end mt-2">
+        <BionicPlayer />
+      </div>
     </div>
   );
 };
