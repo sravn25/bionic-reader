@@ -8,13 +8,11 @@ import { CodeXml, Copy } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { ToastAction } from "../ui/toast";
 import BionicText from "./BionicText";
+import { useBionic } from "@/context/bionicContext";
 
-interface TextOutputProps {
-  outputText: string;
-  fontSize: number;
-}
+const TextOutput: React.FC = () => {
+  const { outputText, fontSize } = useBionic();
 
-const TextOutput: React.FC<TextOutputProps> = ({ outputText, fontSize }) => {
   const handleCopyHTML = () => {
     navigator.clipboard.writeText(outputText).then(() =>
       toast({

@@ -6,26 +6,19 @@ import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import BionicText from "./BionicText";
 import Configs from "./Configs";
+import { useBionic } from "@/context/bionicContext";
 
-interface TextInputProps {
-  inputText: string;
-  setInputText: (inputText: string) => void;
-  convert: () => void;
-  boldLength: number;
-  setBoldLength: (boldLength: number) => void;
-  fontSize: number;
-  setFontSize: (fontSize: number) => void;
-}
+const TextInput = () => {
+  const {
+    inputText,
+    setInputText,
+    convertToBionic,
+    boldLength,
+    setBoldLength,
+    fontSize,
+    setFontSize,
+  } = useBionic();
 
-const TextInput: React.FC<TextInputProps> = ({
-  inputText,
-  setInputText,
-  convert,
-  boldLength,
-  setBoldLength,
-  fontSize,
-  setFontSize,
-}) => {
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
   };
@@ -56,7 +49,7 @@ const TextInput: React.FC<TextInputProps> = ({
         </Label>
         <Button
           onClick={() => {
-            convert();
+            convertToBionic();
           }}
           disabled={!inputText}
           className="bg-green-600 hover:bg-green-700"
