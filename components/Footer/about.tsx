@@ -30,6 +30,9 @@ const About = () => {
           <li>
             <BionicText text="Copying in Text for web-based editors (Gmail, Notion, or Google Docs)" />
           </li>
+          <li>
+            <BionicText text="Bionic reader player that displays one word at a time" />
+          </li>
         </ul>
       </div>
     </div>

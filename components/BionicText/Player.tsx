@@ -53,8 +53,8 @@ const BionicPlayer = () => {
       }}
     >
       <DialogTrigger asChild disabled={!outputText}>
-        <Button className="border" variant="ghost">
-          <Play />
+        <Button className="border bg-green-600 hover:bg-green-700">
+          <Play className="stroke-white " />
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -65,17 +65,27 @@ const BionicPlayer = () => {
           className="border rounded-md p-4 h-32 w-full flex items-center justify-center text-foreground bg-background text-center"
           dangerouslySetInnerHTML={{ __html: words[currentWordIndex] }}
         />
-        <div className="flex gap-2 mt-4">
-          <Button onClick={() => setIsPlaying((prev) => !prev)} variant="ghost">
+        <div className="flex gap-2 mt-2">
+          <Button
+            onClick={() => setIsPlaying((prev) => !prev)}
+            variant="ghost"
+            className="border"
+            disabled={currentWordIndex + 1 === words.length}
+          >
             {isPlaying ? <Pause /> : <Play />}
           </Button>
-          <Button onClick={() => setCurrentWordIndex(0)} variant="ghost">
+          <Button
+            onClick={() => setCurrentWordIndex(0)}
+            variant="ghost"
+            className="border"
+            disabled={currentWordIndex === 0}
+          >
             <RotateCw />
           </Button>
         </div>
         <DialogFooter className="text-gray-400 flex flex-col">
           <div>
-            {currentWordIndex + 1} / {words.length}
+            {currentWordIndex + 1} / {words.length} words
           </div>
         </DialogFooter>
       </DialogContent>
