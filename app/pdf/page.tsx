@@ -4,7 +4,9 @@ import { useState } from "react";
 import Navbar from "@/components/Header/navbar";
 import About from "@/components/Footer/about";
 import FileInput from "@/components/PDF/FileInput";
-import PdfParser from "@/components/PDF/Parser";
+import dynamic from "next/dynamic";
+
+const PdfParser = dynamic(() => import("@/components/PDF/Parser"), { ssr: false });
 
 const Page = () => {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
